@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with MapGL React App
 
 -   `npm install` — install dependencies
 -   `npm start` — start demo
