@@ -7,9 +7,9 @@ import { Directions } from '@2gis/mapgl-directions';
 
 const MapWrapper = memo(
     function MapContainer() {
-        return <div id="map-container" style={{ width: '100%', height: '100%' }}></div>;
+        return <div id='map-container' style={{ width: '100%', height: '100%' }}></div>;
     },
-    () => true
+    () => true,
 );
 
 export default function Mapgl() {
@@ -27,20 +27,20 @@ export default function Mapgl() {
                 key: 'a1893935-6834-4445-b97a-3405fb426c5b',
             });
 
-            /** 
+            /**
              * Ruler  plugin
              */
-            
-            new RulerControl(map, { position: 'centerRight'});
 
-            /** 
+            new RulerControl(map, { position: 'centerRight' });
+
+            /**
              * Clusterer plugin
              */
 
             clusterer = new Clusterer(map, {
                 radius: 60,
             });
-            
+
             const markers = [
                 { coordinates: [55.27887, 25.21001] },
                 { coordinates: [55.30771, 25.20314] },
@@ -48,8 +48,7 @@ export default function Mapgl() {
             ];
             clusterer.load(markers);
 
-
-            /** 
+            /**
              * Directions plugin
              */
 
@@ -57,17 +56,18 @@ export default function Mapgl() {
                 directionsApiKey: 'rujany4131', // It's just demo key
             });
 
-            directions.carRoute({ 
+            directions.carRoute({
                 points: [
                     [55.28273111108218, 25.234131928828333],
-                    [55.35242563034581, 25.23925607042088]
-            ]});
-            
+                    [55.35242563034581, 25.23925607042088],
+                ],
+            });
+
             setMapglContext({
                 mapglInstance: map,
-                mapgl
+                mapgl,
             });
-        })
+        });
 
         // Destroy the map, if Map component is going to be unmounted
         return () => {

@@ -1,9 +1,9 @@
 import { createContext, useContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
 
 const MapglContext = createContext<{
-    mapgl?: typeof mapgl,
-    mapglInstance?: mapgl.Map,
-    setMapglContext: Dispatch<SetStateAction<MapContextState>>,
+    mapgl?: typeof mapgl;
+    mapglInstance?: mapgl.Map;
+    setMapglContext: Dispatch<SetStateAction<MapContextState>>;
 }>({
     mapgl: undefined,
     mapglInstance: undefined,
@@ -11,8 +11,8 @@ const MapglContext = createContext<{
 });
 
 interface MapContextState {
-    mapglInstance?: mapgl.Map,
-    mapgl?: typeof mapgl,
+    mapglInstance?: mapgl.Map;
+    mapgl?: typeof mapgl;
 }
 
 export function useMapglContext() {
@@ -20,10 +20,13 @@ export function useMapglContext() {
 }
 
 export function MapglContextProvider({ children }: { children: ReactNode }) {
-    const [{ mapglInstance, mapgl }, setMapglContext] = useState<MapContextState>({ mapglInstance: undefined, mapgl: undefined });
+    const [{ mapglInstance, mapgl }, setMapglContext] = useState<MapContextState>({
+        mapglInstance: undefined,
+        mapgl: undefined,
+    });
     return (
         <MapglContext.Provider value={{ mapgl, mapglInstance, setMapglContext }}>
             {children}
         </MapglContext.Provider>
     );
-};
+}
