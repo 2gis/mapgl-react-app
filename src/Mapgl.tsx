@@ -5,6 +5,8 @@ import { Clusterer } from '@2gis/mapgl-clusterer';
 import { RulerControl } from '@2gis/mapgl-ruler';
 import { Directions } from '@2gis/mapgl-directions';
 
+export const MAP_CENTER = [55.31878, 25.23584];
+
 const MapWrapper = memo(
     function MapContainer() {
         return <div id='map-container' style={{ width: '100%', height: '100%' }}></div>;
@@ -22,16 +24,18 @@ export default function Mapgl() {
 
         load().then((mapgl) => {
             map = new mapgl.Map('map-container', {
-                center: [55.31878, 25.23584],
+                center: MAP_CENTER,
                 zoom: 13,
                 key: 'a1893935-6834-4445-b97a-3405fb426c5b',
             });
+
+            map.on('click', (e) => console.log(e));
 
             /**
              * Ruler  plugin
              */
 
-            new RulerControl(map, { position: 'centerRight' });
+            const rulerControl = new RulerControl(map, { position: 'centerRight' });
 
             /**
              * Clusterer plugin
@@ -65,6 +69,7 @@ export default function Mapgl() {
 
             setMapglContext({
                 mapglInstance: map,
+                rulerControl,
                 mapgl,
             });
         });
