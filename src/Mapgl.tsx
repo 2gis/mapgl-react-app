@@ -4,6 +4,8 @@ import { useMapglContext } from './MapglContext';
 import { Clusterer } from '@2gis/mapgl-clusterer';
 import { RulerControl } from '@2gis/mapgl-ruler';
 import { Directions } from '@2gis/mapgl-directions';
+import { useControlRotateClockwise } from './useControlRotateClockwise';
+import { ControlRotateCounterclockwise } from './ControlRotateConterclockwise';
 
 export const MAP_CENTER = [55.31878, 25.23584];
 
@@ -83,5 +85,12 @@ export default function Mapgl() {
         };
     }, [setMapglContext]);
 
-    return <MapWrapper />;
+    useControlRotateClockwise();
+
+    return (
+        <>
+            <MapWrapper />
+            <ControlRotateCounterclockwise />
+        </>
+    );
 }
