@@ -1,4 +1,4 @@
-import { memo, useEffect } from 'react';
+import { useEffect } from 'react';
 import { load } from '@2gis/mapgl';
 import { useMapglContext } from './MapglContext';
 import { Clusterer } from '@2gis/mapgl-clusterer';
@@ -6,15 +6,9 @@ import { RulerControl } from '@2gis/mapgl-ruler';
 import { Directions } from '@2gis/mapgl-directions';
 import { useControlRotateClockwise } from './useControlRotateClockwise';
 import { ControlRotateCounterclockwise } from './ControlRotateConterclockwise';
+import { MapWrapper } from './MapWrapper';
 
 export const MAP_CENTER = [55.31878, 25.23584];
-
-const MapWrapper = memo(
-    function MapContainer() {
-        return <div id='map-container' style={{ width: '100%', height: '100%' }}></div>;
-    },
-    () => true,
-);
 
 export default function Mapgl() {
     const { setMapglContext } = useMapglContext();
